@@ -17,7 +17,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="148dp"
-            android:hint="Address"/>
+            android:hint="Address"
+            android:imeOptions="actionSearch"/>
 
     <Button
             android:text="search"
@@ -29,5 +30,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             android:layout_marginBottom="88dp"
-            android:onClick="onEnter"/>
+            android:onClick="onEnterAddress"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

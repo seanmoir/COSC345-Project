@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-     public void onEnter(View view) {
+     public void onEnterAddress(View view) {
          EditText editBox = findViewById(R.id.address);
          address = editBox.getText().toString();
          System.out.println(address);
