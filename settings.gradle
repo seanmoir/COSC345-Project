@@ -1,0 +1,2 @@
+rootProject.name='BoozeSpy'
+include ':app'
