@@ -5,6 +5,7 @@ public class Product {
     private String imgUrl;
     private String url;
     private double price;
+    private String store;
 
     public Product() {
         setName("");
@@ -52,7 +53,19 @@ public class Product {
         this.price = price;
     }
 
-    public String toString() {
-        return "{ name=" + getName() + ", imgUrl=" + getImgUrl() + ", url=" + getUrl() + ", price=" + getPrice() + " }";
+    public String getStore() {
+        return store;
     }
+
+    public void setStore(String store) {
+        this.store = store;
+    }
+
+    @Override
+    public String toString() {
+        return "{ name=" + getName() + ", imgUrl=" + getImgUrl() + ", url=" + getUrl() + ", price="
+                + getPrice() + ", store=" + getStore() + " }";
+    }
+
+
 }
