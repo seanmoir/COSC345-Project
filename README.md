@@ -2,6 +2,7 @@
 App for COSC345
 
 Build using Android Studio/IntelliJ
+https://developer.android.com/studio/run
 
 Tested on Galaxy s8+ and Android R emulator
 
