@@ -1,6 +1,7 @@
 package com.app.boozespy;
 
 import android.location.Location;
+import android.os.AsyncTask;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -64,40 +65,11 @@ public class MainActivity extends AppCompatActivity {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER) &&
                     (search.getText().length() > 0)) {
                     // Perform action on key press
-                    try {
-                        Toast.makeText(MainActivity.this,
-                                LiqourLandProducts(search.getText().toString()).toString(), Toast.LENGTH_SHORT).show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    new DownloadProducts().execute(search.getText().toString());
                     return true;
                 }
                 return false;
             }
         });
-    }
-
-
-    //Ubaada's web scrapping work integrated into the app by Sean
-    public static List<Product> LiqourLandProducts(String searchTerm) throws IOException {
-        List<Product> productList = new ArrayList<>();
-        String url = "https://www.shop.liquorland.co.nz/Search.aspx?k=" + searchTerm;
-        Map<String, String> cookies = new HashMap<>();
-        cookies.put("VisitorIsAdult", "True");
-        cookies.put("sessiondob", "01/01/1900");
-        cookies.put("selectedStore", "933");
-        Document doc = Jsoup.connect(url).cookies(cookies).get();
-
-        Elements scrappedList = doc.getElementsByClass("itemContainer");
-        for (Element product : scrappedList) {
-            Product newProd = new Product();
-            newProd.setName(product.selectFirst(".w2mItemName").text());
-            newProd.setPrice(Double.parseDouble(product.selectFirst("span.value , span.SpecialPriceFormat2").text().replace("$","")));
-            newProd.setImgUrl("http://www.shop.liquorland.co.nz/" + product.selectFirst("a img").attr("src"));
-            newProd.setUrl("http://www.shop.liquorland.co.nz/" + product.selectFirst("a").attr("href"));
-
-            productList.add(newProd);
-        }
-        return productList;
     }
 }
