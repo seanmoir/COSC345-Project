@@ -1,11 +1,14 @@
 package com.app.boozespy;
 
+import android.graphics.Bitmap;
+
 public class Product {
     private String name;
     private String imgUrl;
     private String url;
     private double price;
     private String store;
+    private Bitmap image;
 
     public Product() {
         setName("");
@@ -59,6 +62,14 @@ public class Product {
 
     public void setStore(String store) {
         this.store = store;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 
     @Override
