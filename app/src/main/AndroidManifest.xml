@@ -16,11 +16,6 @@
             android:supportsRtl="true"
             android:theme="@style/BoozeCustomTheme">
 
-        <service
-                android:name="MainActivity"
-                android:foregroundServiceType="location">
-        </service>
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
