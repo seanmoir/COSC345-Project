@@ -7,17 +7,6 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/gpsPrintOut"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Location Text"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productViewer"
@@ -28,8 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gpsPrintOut"
-        app:layout_constraintVertical_bias="1.0" >
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -40,7 +28,9 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
+        android:padding="10dp"
         android:theme="?attr/actionBarTheme"
+        app:contentInsetStart="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -50,7 +40,11 @@
             style="@style/Widget.AppCompat.AutoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:hint="Search Booze"
             android:inputType="text"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
             android:textColor="@color/colorSearchBoxText"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="5dp" />

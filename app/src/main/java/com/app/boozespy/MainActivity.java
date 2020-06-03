@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         locationClient = LocationServices.getFusedLocationProviderClient(this);
-
-        final TextView gpsLocation = findViewById(R.id.gpsPrintOut);
-
         locationClient.getLastLocation()
                 //print why failed to get location to stdout for debugging purposes
                 .addOnFailureListener(this, new OnFailureListener() {
@@ -50,10 +47,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
                         if (location != null) {
-                            gpsLocation.setText(location.toString());
+                            System.out.println(location.toString());
                         } else {
                             //debugging so we know if location is returned NULL
-                            gpsLocation.setText("NULL");
+                            System.out.println("Location: NULL");
                         }
                     }
                 });
