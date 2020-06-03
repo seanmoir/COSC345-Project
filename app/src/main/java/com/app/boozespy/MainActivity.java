@@ -1,19 +1,22 @@
 package com.app.boozespy;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
+import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -33,27 +36,34 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         locationClient = LocationServices.getFusedLocationProviderClient(this);
-        locationClient.getLastLocation()
-                //print why failed to get location to stdout for debugging purposes
-                .addOnFailureListener(this, new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        e.printStackTrace();
-                    }
-                })
 
-                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            System.out.println(location.toString());
-                        } else {
-                            //debugging so we know if location is returned NULL
-                            System.out.println("Location: NULL");
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_DENIED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_DENIED) {
+
+            locationClient.getLastLocation()
+                    //print why failed to get location to stdout for debugging purposes
+                    .addOnFailureListener(this, new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            e.printStackTrace();
                         }
-                    }
-                });
+                    })
+
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+                                System.out.println(location.toString());
+                            } else {
+                                //debugging so we know if location is returned NULL
+                                System.out.println("Location: NULL");
+                            }
+                        }
+                    });
+        }
 
         setSearchBoxBehavior();
         configureProductViewer();
@@ -116,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
 
 
     /*
