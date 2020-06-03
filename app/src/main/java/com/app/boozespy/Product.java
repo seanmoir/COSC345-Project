@@ -2,7 +2,15 @@ package com.app.boozespy;
 
 import android.graphics.Bitmap;
 
+import androidx.annotation.NonNull;
+
+/**
+ * Type class, used for data returned from outside websites
+ *
+ * @author Sean Moir
+ */
 public class Product {
+
     private String name;
     private String imgUrl;
     private String url;
@@ -10,20 +18,39 @@ public class Product {
     private String store;
     private Bitmap image;
 
+    /**
+     * Empty constructor, sets defaults ("", 0, null)
+     */
     public Product() {
-        setName("");
-        setPrice(0.00);
-        setImgUrl("");
-        setUrl("");
+        this.name = "";
+        this.price = 0.00;
+        this.imgUrl = "";
+        this.url = "";
+        this.store = "";
+        this.image = null;
     }
 
-    public Product(String name, double price, String imgUrl, String url) {
-        setName(name);
-        setPrice(price);
-        setUrl(url);
-        setImgUrl(imgUrl);
+    /**
+     * Constructor to initalise a non-empty products
+     *
+     * @param name   name of product
+     * @param price  price of product
+     * @param imgUrl URL to image of product
+     * @param url    URL to product
+     * @param store  stores name
+     * @param image  bitmap image of product
+     */
+    public Product(String name, double price, String imgUrl, String url, String store, Bitmap image) {
+        this.name = name;
+        this.price = price;
+        this.url = url;
+        this.imgUrl = imgUrl;
+        this.store = store;
+        this.image = image;
     }
 
+
+    /* Getters and Setters */
     public String getName() {
         return name;
     }
@@ -71,7 +98,15 @@ public class Product {
     public void setImage(Bitmap image) {
         this.image = image;
     }
+    /* -------------------------------------------- */
 
+
+    /**
+     * Textual representation of product, image is missing for obvious reasons
+     *
+     * @return String that represent products properties
+     */
+    @NonNull
     @Override
     public String toString() {
         return "{ name=" + getName() + ", imgUrl=" + getImgUrl() + ", url=" + getUrl() + ", price="

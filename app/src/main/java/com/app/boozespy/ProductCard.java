@@ -9,21 +9,29 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
-/*
-Desribes the layout for each empty product card in the UI.
-Card contains a group divided horizontally into 2 groups:
-    1. For image view.
-    2. Labels Group
-Labels Group is then Divided vertically for each label
-    1. Name
-    2. Price
-    3. Store
+/**
+ * Desribes the layout for each empty product card in the UI.
+ * Card contains a group divided horizontally into 2 groups:
+ * 1. For image view.
+ * 2. Labels Group
+ * Labels Group is then Divided vertically for each label
+ * 1. Name
+ * 2. Price
+ * 3. Store
+ *
+ * @author Ubaada
  */
 public class ProductCard extends CardView {
     public TextView nameTxt;
     public TextView priceTxt;
     public TextView storeTxt;
     public ImageView imgView;
+
+    /**
+     * Configure the card itself
+     *
+     * @param context parent object
+     */
     public ProductCard(Context context) {
         super(context);
 
@@ -66,7 +74,14 @@ public class ProductCard extends CardView {
 
     }
 
-    public static int dpToPx(float dp, Context context){
+    /**
+     * converter class
+     *
+     * @param dp      dp value
+     * @param context parent object
+     * @return px value
+     */
+    public static int dpToPx(float dp, Context context) {
         float answer = dp * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
         return (int) dp;
     }

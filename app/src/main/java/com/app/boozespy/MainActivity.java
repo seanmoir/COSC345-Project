@@ -24,10 +24,26 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.List;
 
+/**
+ * Main entry point for application, setups UI, handles keyboard listeners
+ *
+ * @author Sean Moir, Ubaada
+ */
 public class MainActivity extends AppCompatActivity {
+
     private FusedLocationProviderClient locationClient;
 
+    /**
+     * Empty constructor
+     */
+    public MainActivity() {
+    }
 
+    /**
+     * called on start of the app, onCreate hook
+     *
+     * @param savedInstanceState saved state of program
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*
-    Configures the search box to start web scrapping when the enters a search term.
+    /**
+     * Configures the search box to start web scrapping when the enters a search term.
      */
     public void setSearchBoxBehavior() {
         final EditText search = findViewById(R.id.searchBox);
@@ -93,8 +109,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /*
-    Configure the product viewer to display product cards.
+
+    /**
+     * Configure the product viewer to display product cards.
      */
     public void configureProductViewer() {
         RecyclerView productViewer = (RecyclerView) findViewById(R.id.productViewer);
@@ -108,8 +125,11 @@ public class MainActivity extends AppCompatActivity {
         productViewer.setLayoutManager(layoutManager);
     }
 
-    /*
-    This web scrapper fires this method after scrapping is done.
+
+    /**
+     * This web scrapper fires this method after scrapping is done.
+     *
+     * @param products Products downloaded from the web
      */
     public void updateCards(List<Product> products) {
         // Sorting logic can be placed here
@@ -128,10 +148,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*
-    First condition after opening app.
-    Hide the empty productViewer and show "instruction image" in progress Group
-    */
+    /**
+     * First condition after opening app.
+     * Hide the empty productViewer and show "instruction image" in progress Group
+     */
     public void showNoSearchYet() {
         findViewById(R.id.productViewer).setVisibility(View.INVISIBLE);
         findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
@@ -144,8 +164,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.progressGroup).setVisibility(View.VISIBLE);
     }
 
-    /*
-    Hide old products and show progressBar inside progressGroup
+
+    /**
+     * Hide old products and show progressBar inside progressGroup
      */
     public void showSearchInProgress() {
         findViewById(R.id.productViewer).setVisibility(View.INVISIBLE);
@@ -154,17 +175,19 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.progressGroup).setVisibility(View.VISIBLE);
     }
 
-    /*
-    Hide the progressGroup and show the results
-    */
+
+    /**
+     * Hide the progressGroup and show the results
+     */
     public void showProductViewer() {
         findViewById(R.id.productViewer).setVisibility(View.VISIBLE);
         findViewById(R.id.progressGroup).setVisibility(View.INVISIBLE);
     }
 
-    /*
-    Search completed but no data to show
-    Hide results and show error image in progressGroup
+
+    /**
+     * Search completed but no data to show
+     * Hide results and show error image in progressGroup
      */
     public void showNoDataFound() {
         findViewById(R.id.productViewer).setVisibility(View.INVISIBLE);
