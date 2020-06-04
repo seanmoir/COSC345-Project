@@ -22,6 +22,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -132,7 +133,17 @@ public class MainActivity extends AppCompatActivity {
      * @param products Products downloaded from the web
      */
     public void updateCards(List<Product> products) {
-        // Sorting logic can be placed here
+        // Sorting logic can be placed here, sorting only by price for now
+        int i, j, min_idx;
+        int n = products.size();
+        for (i = 0; i < n-1; i++)
+        {
+            min_idx = i;
+            for (j = i+1; j < n; j++)
+                if (products.get(j).getPrice() < products.get(min_idx).getPrice())
+                    min_idx = j;
+            Collections.swap(products,min_idx,i);
+        }
 
         // Set the ProductViewers data source to the returned result
         ProductAdapter myAdapter = new ProductAdapter(products);
