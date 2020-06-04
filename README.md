@@ -1,6 +1,9 @@
 # COSC345-Project
 App for COSC345
 
+Code Documentation:
+https://ubaada.github.io/COSC345-Project/
+
 Build using Android Studio/IntelliJ
 https://developer.android.com/studio/run
 
