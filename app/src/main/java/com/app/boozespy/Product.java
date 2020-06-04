@@ -50,6 +50,23 @@ public class Product {
     }
 
 
+    /**
+     * Constructor to partially initalise a non-empty products (excluding empty bitmap)
+     *
+     * @param name   name of product
+     * @param price  price of product
+     * @param imgUrl URL to image of product
+     * @param url    URL to product
+     * @param store  stores name
+     */
+    public Product(String name, double price, String imgUrl, String url, String store) {
+        this.name = name;
+        this.price = price;
+        this.url = url;
+        this.imgUrl = imgUrl;
+        this.store = store;
+    }
+
     /* Getters and Setters */
     public String getName() {
         return name;
