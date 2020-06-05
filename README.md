@@ -8,9 +8,10 @@ App for COSC345
 ![GitHub repo size](https://img.shields.io/github/repo-size/ubaada/COSC345-Project)
 ![](https://img.shields.io/badge/Platform-Android-brightgreen)
 
-Code Documentation:
+# Code Documentation:
 https://ubaada.github.io/COSC345-Project/
 
+# Build instructions
 Build using Android Studio
 https://developer.android.com/studio/run
 
@@ -18,5 +19,6 @@ Or build from command line and run manually:
 https://developer.android.com/studio/build/building-cmdline
 
 
-
-Tested on Galaxy s8+ and Android 10.0 emulator
+# Tested
+Galaxy s8+
+Android 10.0 emulator
