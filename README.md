@@ -19,6 +19,10 @@ https://developer.android.com/studio/build/building-cmdline
 
 
 # Tested
-Galaxy s8+
+Galaxy s8+ (Android 9)
+<br>
+Huawei nova 3i (Android 9)
 <br>
 Android 10.0 emulator
+<br>
+Android 5.1 emulator
