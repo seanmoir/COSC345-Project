@@ -19,4 +19,4 @@ https://developer.android.com/studio/build/building-cmdline
 
 
 
-Tested on Galaxy s8+ and Android R emulator
+Tested on Galaxy s8+ and Android 10.0 emulator
