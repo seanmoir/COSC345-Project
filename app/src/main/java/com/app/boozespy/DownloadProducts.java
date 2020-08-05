@@ -163,11 +163,8 @@ public class DownloadProducts extends AsyncTask<String, Void, List<Product>> {
                 newProd.setPrice(Double.parseDouble(priceMatch.group(1)));
             }
             // img url is in the [background-url : ('here')] style attribute of a div
-            String styletxt = product.selectFirst(".fs-product-card__product-image").attr("style");
-            Matcher m = Pattern.compile("\\('(http.*)'\\)").matcher(styletxt);
-            while (m.find()) {
-                newProd.setImgUrl(m.group(1));
-            }
+            String imgUrl = product.selectFirst(".fs-product-card__product-image").attr("data-src-s");
+            newProd.setImgUrl(imgUrl);
             newProd.setUrl("https://www.ishopnewworld.co.nz" + product.selectFirst("a.fs-product-card__details").attr("href"));
             newProd.setStore("New World");
             newProd.setImage(getImageFromUrl(newProd.getImgUrl()));
@@ -202,11 +199,8 @@ public class DownloadProducts extends AsyncTask<String, Void, List<Product>> {
                 newProd.setPrice(Double.parseDouble(priceMatch.group(1)));
             }
             // img url is in the [background-url : ('here')] style attribute of a div
-            String styletxt = product.selectFirst(".fs-product-card__product-image").attr("style");
-            Matcher m = Pattern.compile("\\('(http.*)'\\)").matcher(styletxt);
-            while (m.find()) {
-                newProd.setImgUrl(m.group(1));
-            }
+            String imgUrl = product.selectFirst(".fs-product-card__product-image").attr("data-src-s");
+            newProd.setImgUrl(imgUrl);
             newProd.setUrl("https://www.paknsaveonline.co.nz" + product.selectFirst("a.fs-product-card__details").attr("href"));
             newProd.setStore("PaknSave");
             newProd.setImage(getImageFromUrl(newProd.getImgUrl()));
