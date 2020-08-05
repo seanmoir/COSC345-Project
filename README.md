@@ -1,13 +1,30 @@
-# COSC345-Project
+# Boozespy
+
 App for COSC345
 
-Code Documentation:
+Built using Java
+
+![](https://github.com/ubaada/COSC345-Project/workflows/Test%20&%20Build%20Android%20CI/badge.svg)
+![](https://img.shields.io/github/contributors/ubaada/COSC345-Project.svg)
+![GitHub repo size](https://img.shields.io/github/repo-size/ubaada/COSC345-Project)
+![](https://img.shields.io/badge/Platform-Android-brightgreen)
+
+# Code Documentation:
 https://ubaada.github.io/COSC345-Project/
 
-Build using Android Studio/IntelliJ
+# Build instructions
+Build using Android Studio
 https://developer.android.com/studio/run
 
-Tested on Galaxy s8+ and Android R emulator
+Or build from command line and run manually:
+https://developer.android.com/studio/build/building-cmdline
 
-Assignment 1 planning documentation:
-https://docs.google.com/document/d/198Zw-ZD1kkEozs_0kBhSLO9sjlQ90KQWUP01aLqUzaM
+
+# Tested
+Galaxy s8+ (Android 9)
+<br>
+Huawei nova 3i (Android 9)
+<br>
+Android 10.0 emulator
+<br>
+Android 5.1 emulator
