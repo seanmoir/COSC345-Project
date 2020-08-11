@@ -193,15 +193,15 @@ public class DownloadProducts extends AsyncTask<String, Void, List<Product>> {
         List<Product> productList = new ArrayList<>();
 
         //Nasty string that contains all tags alcoholic drinks are under
-        String url = "https://www.paknsaveonline.co.nz/category/beer-cider-and-wine?s=popularity" +
-                "&sd=0&f=tags%3DAmerican-style%2520Ale%257CCask%2520Wine%257CLager%257COther%2520White" +
-                "%2520Wine%257CRose%257CSauvignon%2520Blanc%257CPale%2520Ale%257CLighter%2520Alcohol" +
-                "%2520Beers%257CChampagne%2520%2526%2520Sparkling%2520Wine%257CApple%2520%2526%2520Pear" +
-                "%2520Cider%257CBeer%2520%2526%2520Cider%257CChardonnay%257CLighter%2520Alcohol%2520Wines" +
-                "%257CPilsner%257CShiraz%257CBrewing%2520Supplies%257CFruit%2520%2526%2520Flavoured%2520Cider" +
-                "%257CMerlot%257CPinot%2520Gris%257CSpecialty%2520%2526%2520Flavoured%2520Beer%257CCabernet" +
-                "%257CIPA%257COther%2520Red%2520Wine%257CPinot%2520Noir%257CStout%252C%2520Porter" +
-                "%2520%2526%2520Black%2520Beer/Search?q=" + searchTerm;
+        String url = "https://www.paknsaveonline.co.nz/Search?s=sortprice&sd=0&f=tags%3DAmerican-style" +
+                "%2520Ale%257CApple%2520%2526%2520Pear%2520Cider%257CBeer%2520%2526%2520Cider" +
+                "%257CBrewing%2520Supplies%257CCabernet%257CCask%2520Wine%257CChampagne%2520%2526" +
+                "%2520Sparkling%2520Wine%257CChardonnay%257CFruit%2520%2526%2520Flavoured%2520Cider" +
+                "%257CIPA%257CLager%257CLighter%2520Alcohol%2520Beers%257CLighter%2520Alcohol%2520Wines" +
+                "%257CMerlot%257COther%2520Red%2520Wine%257COther%2520White%2520Wine%257CPale%2520Ale" +
+                "%257CPilsner%257CPinot%2520Gris%257CPinot%2520Noir%257CRose%257CSauvignon%2520Blanc" +
+                "%257CShiraz%257CSpecialty%2520%2526%2520Flavoured%2520Beer%257CStout%252C%2520Porter" +
+                "%2520%2526%2520Black%2520Beer%257CWine&q=" + searchTerm;
 
         Document doc = Jsoup.connect(url).get();
         Elements scrappedList = doc.select(".fs-product-card");
