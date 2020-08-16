@@ -67,55 +67,113 @@ public class Product {
         this.store = store;
     }
 
-    /* Getters and Setters */
+    /**
+     * Retrives name of Product
+     *
+     * @return name of product
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets name of Product
+     *
+     * @param name updated name of product
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Retrives image URL of Product
+     *
+     * @return image URL of product
+     */
     public String getImgUrl() {
         return imgUrl;
     }
 
+    /**
+     * Sets image URL of Product
+     *
+     * @param imgUrl image URL of product
+     */
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
 
+    /**
+     * Retrives URL of Product
+     *
+     * @return URL of product
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * Sets URL of Product
+     *
+     * @param url name of product
+     */
     public void setUrl(String url) {
         this.url = url;
     }
 
+    /**
+     * Retrives price of Product
+     *
+     * @return price of product
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Sets price of Product
+     *
+     * @return price of product
+     */
     public void setPrice(double price) {
         this.price = price;
     }
 
+    /**
+     * Retrives store of Product
+     *
+     * @return store of product
+     */
     public String getStore() {
         return store;
     }
 
+    /**
+     * Sets store of Product
+     *
+     * @param store store of product
+     */
     public void setStore(String store) {
         this.store = store;
     }
 
+    /**
+     * Retrives image of Product
+     *
+     * @return image of product
+     */
     public Bitmap getImage() {
         return image;
     }
 
+    /**
+     * Sets image of Product
+     *
+     * @param image image of product
+     */
     public void setImage(Bitmap image) {
         this.image = image;
     }
-    /* -------------------------------------------- */
 
 
     /**

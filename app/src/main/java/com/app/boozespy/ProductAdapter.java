@@ -44,6 +44,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
      * Used after products are returned from DownloadProducts.
      *
      * @param products list of products downloaded
+     * @param context  The context that the product adapter relates too
      */
     public ProductAdapter(List<Product> products, Context context) {
         this.products = products;
