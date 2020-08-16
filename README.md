@@ -9,6 +9,15 @@ Built using Java
 ![GitHub repo size](https://img.shields.io/github/repo-size/ubaada/COSC345-Project)
 ![](https://img.shields.io/badge/Platform-Android-brightgreen)
 
+# WIP
+Location based searching
+
+# Currently working
+
+Basic functionality of searching for products (Assignment 2)
+<br>
+Being able to open searched products in a web browser (Assignment 3)
+
 # Code Documentation:
 https://ubaada.github.io/COSC345-Project/
 
