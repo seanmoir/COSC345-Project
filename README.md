@@ -12,6 +12,11 @@ Built using Java
 # WIP
 Location based searching
 
+# Currently working
+
+basic functionality of searching for products (Assignment 2)
+Being able to open searched products in a web browser (Assignment 3)
+
 # Code Documentation:
 https://ubaada.github.io/COSC345-Project/
 
