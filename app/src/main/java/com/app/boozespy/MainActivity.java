@@ -1,12 +1,14 @@
 package com.app.boozespy;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -177,9 +179,20 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * Hide old products and show progressBar inside progressGroup
+     * Hide old products, keyboard and show progressBar inside progressGroup
      */
     public void showSearchInProgress() {
+        //Hides keyboard after search
+        InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(this);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+
         findViewById(R.id.productViewer).setVisibility(View.INVISIBLE);
         findViewById(R.id.messageImage).setVisibility(View.INVISIBLE);
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
