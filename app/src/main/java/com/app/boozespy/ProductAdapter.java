@@ -1,6 +1,10 @@
 package com.app.boozespy;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -19,6 +23,7 @@ import java.util.List;
  */
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
     private List<Product> products;
+    private Context context;
 
     /**
      * Part of the interface to implement for the ProductViewer to use.
@@ -40,8 +45,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
      *
      * @param products list of products downloaded
      */
-    public ProductAdapter(List<Product> products) {
+    public ProductAdapter(List<Product> products, Context context) {
         this.products = products;
+        this.context = context;
     }
 
     /**
@@ -61,17 +67,25 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     /**
      * Fill the ProductCard with data.
+     * listener for tapping the card to open product in web browser
      * This technique is used to reuse the same UI components and avoid performance lag.
      *
      * @param holder   ProductCard
      * @param position position in list
      */
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.productCard.nameTxt.setText(products.get(position).getName());
         holder.productCard.priceTxt.setText(products.get(position).getPrice() + "$");
         holder.productCard.storeTxt.setText(products.get(position).getStore());
         holder.productCard.imgView.setImageBitmap(products.get(position).getImage());
+        holder.productCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Tells main UI thread to open the URL of the product tapped in a web browser
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(products.get(position).getUrl())));
+            }
+        });
     }
 
     /**

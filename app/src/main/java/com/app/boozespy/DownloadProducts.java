@@ -179,7 +179,6 @@ public class DownloadProducts extends AsyncTask<String, Void, List<Product>> {
         }
         return productList;
     }
-
     /**
      * Scrapes products from PaknSave's online store with a given search key.
      *
@@ -208,6 +207,8 @@ public class DownloadProducts extends AsyncTask<String, Void, List<Product>> {
         System.out.println(scrappedList.size());
         for (Element product : scrappedList) {
             Product newProd = new Product();
+            /*System.out.println(product);
+            System.out.println("\n\n");*/
             newProd.setName(product.selectFirst(".fs-product-card__description").text());
             // price is in the Json attached to the html code.
             String jsonTxt = product.selectFirst(".fs-product-card__footer-container").attr("data-options");

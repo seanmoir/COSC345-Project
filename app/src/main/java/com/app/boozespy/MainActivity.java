@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
      * Configure the product viewer to display product cards.
      */
     public void configureProductViewer() {
-        RecyclerView productViewer = (RecyclerView) findViewById(R.id.productViewer);
+        RecyclerView productViewer = findViewById(R.id.productViewer);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -146,11 +146,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Set the ProductViewers data source to the returned result
-        ProductAdapter myAdapter = new ProductAdapter(products);
+        ProductAdapter myAdapter = new ProductAdapter(products, MainActivity.this);
         if (products.isEmpty()) {
             showNoDataFound();
         } else {
-            RecyclerView productViewer = (RecyclerView) findViewById(R.id.productViewer);
+            RecyclerView productViewer = findViewById(R.id.productViewer);
             productViewer.setAdapter(myAdapter);
             System.out.println(products);
             showProductViewer();
@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.productViewer).setVisibility(View.INVISIBLE);
         findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
 
-        ImageView messageImage = (ImageView) findViewById(R.id.messageImage);
+        ImageView messageImage = findViewById(R.id.messageImage);
         Resources res = getResources();
         messageImage.setImageDrawable(res.getDrawable(R.drawable.ic_drink));
         messageImage.setVisibility(View.VISIBLE);
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.productViewer).setVisibility(View.INVISIBLE);
         findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
 
-        ImageView messageImage = (ImageView) findViewById(R.id.messageImage);
+        ImageView messageImage = findViewById(R.id.messageImage);
         Resources res = getResources();
         messageImage.setImageDrawable(res.getDrawable(R.drawable.no_data));
         messageImage.setVisibility(View.VISIBLE);
