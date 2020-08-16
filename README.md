@@ -2,6 +2,10 @@
 
 App for COSC345
 
+#WIP
+Location based searching
+
+
 Built using Java
 
 ![](https://github.com/ubaada/COSC345-Project/workflows/Test%20&%20Build%20Android%20CI/badge.svg)
