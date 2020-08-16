@@ -14,7 +14,7 @@ Location based searching
 
 # Currently working
 
-basic functionality of searching for products (Assignment 2)
+Basic functionality of searching for products (Assignment 2)
 <br>
 Being able to open searched products in a web browser (Assignment 3)
 
