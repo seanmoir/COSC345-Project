@@ -2,7 +2,7 @@
 
 App for COSC345
 
-#WIP
+# WIP
 Location based searching
 
 
