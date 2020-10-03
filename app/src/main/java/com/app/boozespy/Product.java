@@ -18,6 +18,11 @@ public class Product {
     private String store;
     private Bitmap image;
 
+    //map info
+    private String nearestBranch;
+    private String nearestGPS;
+    private Double nearestDistance;
+
     /**
      * Empty constructor, sets defaults ("", 0, null)
      */
@@ -133,7 +138,6 @@ public class Product {
     /**
      * Sets price of Product
      *
-     * @return price of product
      */
     public void setPrice(double price) {
         this.price = price;
@@ -177,6 +181,60 @@ public class Product {
 
 
     /**
+     * Retrives nearest branch of the store of Product
+     *
+     * @return nearest branch of the store of Product
+     */
+    public String getNearestBranch() {
+        return nearestBranch;
+    }
+
+    /**
+     * Sets nearest branch of Product
+     *
+     * @param nearestBranch The nearest branch of the store
+     */
+    public void setNearestBranch(String nearestBranch) {
+        this.nearestBranch = nearestBranch;
+    }
+
+    /**
+     * Retrieves GPS coordinates of the nearest branch
+     *
+     * @return GPS coordinates of the nearest branch
+     */
+    public String getNearestGPS() {
+        return nearestGPS;
+    }
+
+    /**
+     * Sets GPS coordinates of the nearest branch
+     *
+     * @param nearestGPS GPS coordinates of the nearest branch
+     */
+    public void setNearestGPS(String nearestGPS) {
+        this.nearestGPS = nearestGPS;
+    }
+
+    /**
+     * Retrives the distance of the nearest branch
+     *
+     * @return  the distance of the nearest branch
+     */
+    public Double getNearestDistance() {
+        return nearestDistance;
+    }
+
+    /**
+     * Sets the distance of the nearest branch
+     *
+     * @param nearestDistance  the distance of the nearest branch
+     */
+    public void setNearestDistance(Double nearestDistance) {
+        this.nearestDistance = nearestDistance;
+    }
+
+    /**
      * Textual representation of product, image is missing for obvious reasons
      *
      * @return String that represent products properties
@@ -185,7 +243,8 @@ public class Product {
     @Override
     public String toString() {
         return "{ name=" + getName() + ", imgUrl=" + getImgUrl() + ", url=" + getUrl() + ", price="
-                + getPrice() + ", store=" + getStore() + " }";
+                + getPrice() + ", store=" + getStore() + ", nearestBranch=" + getNearestBranch()
+                + ", nearestGPS=" + getNearestGPS() + ", nearestDistance=" + getNearestDistance() + "}";
     }
 
 

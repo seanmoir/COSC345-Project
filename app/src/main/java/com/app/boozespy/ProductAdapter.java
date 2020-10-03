@@ -80,6 +80,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         holder.productCard.priceTxt.setText(products.get(position).getPrice() + "$");
         holder.productCard.storeTxt.setText(products.get(position).getStore());
         holder.productCard.imgView.setImageBitmap(products.get(position).getImage());
+        holder.productCard.branchTxt.setText(products.get(position).getNearestBranch());
+        holder.productCard.distanceTxt.setText(products.get(position).getNearestDistance().toString() + " km");
         holder.productCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

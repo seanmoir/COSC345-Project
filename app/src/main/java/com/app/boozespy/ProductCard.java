@@ -26,7 +26,8 @@ public class ProductCard extends CardView {
     public TextView priceTxt;
     public TextView storeTxt;
     public ImageView imgView;
-
+    public TextView branchTxt;
+    public TextView distanceTxt;
     /**
      * Configure the card itself
      *
@@ -56,6 +57,8 @@ public class ProductCard extends CardView {
         nameTxt.setTypeface(null, Typeface.BOLD);
         vertDivide.addView(this.priceTxt = new TextView(context));
         vertDivide.addView(this.storeTxt = new TextView(context));
+        vertDivide.addView(this.branchTxt = new TextView(context));
+        vertDivide.addView(this.distanceTxt = new TextView(context));
 
         // Sets fixed image size dp=200 x dp=200.
         // Sets a margin (white space) around image

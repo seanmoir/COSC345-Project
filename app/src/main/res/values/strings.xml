@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">BoozeSpy</string>
+    <string-array name="store_locations">
+        <item>Liquorland/Leith Street/-45.860920,170.514229</item>
+        <item>Liquorland/Meenans/-45.853986,170.511483</item>
+        <item>Liquorland/Andersons Bay/-45.894084,170.505122</item>
+        <item>Liquorland/Cableways/-45.865898,170.484720</item>
+        <item>Liquorland/Mosgiel/-45.880044,170.353554</item>
+        <item>New World/Centre City/-45.866285,170.508042</item>
+        <item>New World/Gardens/-45.847634,170.519028</item>
+        <item>New World/Mosgiel/-45.866524,170.349770</item>
+        <item>PaknSave/Dunedin/-45.891785,170.498918</item>
+    </string-array>
+    <string name="maps_key">AtrDRB4wcPDwAJ-NxB4QLYy1PyZEF5w5kqKZLedHENJhRlhHcmM1jHex8kE36m5p</string>
 </resources>

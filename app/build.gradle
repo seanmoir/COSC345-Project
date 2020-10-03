@@ -39,6 +39,8 @@ dependencies {
     //jsoup for webscraping
     implementation 'org.jsoup:jsoup:1.13.1'
 
+    //Gson for parsing Json
+    implementation 'com.google.code.gson:gson:2.8.6'
 
     // JUnit 4 framework
     testImplementation 'junit:junit:4.13'
