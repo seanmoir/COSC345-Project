@@ -35,6 +35,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private FusedLocationProviderClient locationClient;
+    private String locationText;
 
     /**
      * Empty constructor
@@ -75,13 +76,18 @@ public class MainActivity extends AppCompatActivity {
                         public void onSuccess(Location location) {
                             // Got last known location. In some rare situations this can be null.
                             if (location != null) {
-                                System.out.println(location.toString());
+                                locationText = location.getLatitude() + ", " + location.getLongitude();
+                                System.out.println("LOCATION: " + locationText);
                             } else {
-                                //debugging so we know if location is returned NULL
-                                System.out.println("Location: NULL");
+                                //if failed to get location, use geology building
+                                locationText = "-45.865022,170.515118";
+                                System.out.println("Location: NULL, thus use geology building for reference");
                             }
                         }
                     });
+        } else {
+            System.out.println("FAILED DUE TO LACK OF PERMISSIONS, thus use geology building");
+            locationText = "-45.865022,170.515118";
         }
 
         setSearchBoxBehavior();
@@ -105,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     v.clearFocus();
                     hideSoftKeyboard();
                     showSearchInProgress();
-                    new DownloadProducts(MainActivity.this).execute(search.getText().toString());
+                    new DownloadProducts(MainActivity.this).execute(new DownloadParams(search.getText().toString(), locationText));
                     return true;
                 }
                 return false;

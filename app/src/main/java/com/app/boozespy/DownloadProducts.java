@@ -5,6 +5,12 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.Pair;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,11 +28,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import android.content.res.Resources;
-import android.util.Pair;
-
-import com.google.gson.*;
 // Notes -----------------------
 // For CountDown's website:
 // The product are loaded from angular (js) so the scrapper cant see them.
@@ -52,7 +53,7 @@ import com.google.gson.*;
  *
  * @author Sean Moir, Ubaada
  */
-public class DownloadProducts extends AsyncTask<String, Void, List<Product>> {
+public class DownloadProducts extends AsyncTask<DownloadParams, Void, List<Product>> {
 
     /**
      * This variable is used to access MainActivity methods, Such as updateUI()
@@ -71,17 +72,17 @@ public class DownloadProducts extends AsyncTask<String, Void, List<Product>> {
     /**
      * main entry point for async worker, calls other functions
      *
-     * @param searchTerm item to search for
+     * @param params item to search for
      * @return list of items found
      */
-    protected List<Product> doInBackground(String... searchTerm) {
+    protected List<Product> doInBackground(DownloadParams... params) {
         List<Product> allResults = new ArrayList<>();
         try {
             // Combine results from all stores
-            allResults.addAll(LiqourLandProducts(searchTerm[0]));
-            allResults.addAll(NewWorldProducts(searchTerm[0]));
-            allResults.addAll(PaknSaveProducts(searchTerm[0]));
-            setMapInfo(allResults);
+            allResults.addAll(LiqourLandProducts(params[0].getSearchTerm()));
+            allResults.addAll(NewWorldProducts(params[0].getSearchTerm()));
+            allResults.addAll(PaknSaveProducts(params[0].getSearchTerm()));
+            setMapInfo(allResults, params[0].getLocation());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -104,34 +105,34 @@ public class DownloadProducts extends AsyncTask<String, Void, List<Product>> {
      *
      * @param products list of products to set the map info of
      */
-    public void setMapInfo(List<Product> products) throws IOException {
+    public void setMapInfo(List<Product> products, String location) throws IOException {
 
         // Get GPS coordinates of all stores of all chains and put themin an array
         Resources res = sender.get().getResources();
         String[] locsResource = res.getStringArray(R.array.store_locations);
 
         String[][] stores = new String[locsResource.length][3];
-        for (int i=0;i<locsResource.length;i++) {
+        for (int i = 0; i < locsResource.length; i++) {
             stores[i] = locsResource[i].split("/");
         }
 
         // geology building
-        String origin = "-45.865022,170.515118";
+        //String origin = "-45.865022,170.515118";
 
         // Prepare the query parameters
-        String destinations = "";
-        for (int i=0; i<stores.length; i++) {
-            if (i == (stores.length-1)) {
-                destinations = destinations + stores[i][2];
+        StringBuilder destinations = new StringBuilder();
+        for (int i = 0; i < stores.length; i++) {
+            if (i == (stores.length - 1)) {
+                destinations.append(stores[i][2]);
             } else {
-                destinations = destinations + stores[i][2] + ";";
+                destinations.append(stores[i][2]).append(";");
             }
         }
         System.out.println(destinations);
 
         // Query the bing maps api
         String url = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=" +
-                origin + "&destinations=" + destinations + "&travelMode=driving&key=" + res.getString(R.string.maps_key);
+                location + "&destinations=" + destinations + "&travelMode=driving&key=" + res.getString(R.string.maps_key);
         String json = Jsoup.connect(url).ignoreContentType(true).execute().body();
 
         Gson gson = new Gson();
@@ -143,7 +144,7 @@ public class DownloadProducts extends AsyncTask<String, Void, List<Product>> {
         JsonArray results = resJ.get(0).getAsJsonObject().getAsJsonArray("results");
 
         // extract distance from each store and put them in a array
-        List<Double> distances = new ArrayList<Double>();
+        List<Double> distances = new ArrayList<>();
         for (JsonElement distanceElem: results) {
             distances.add(distanceElem.getAsJsonObject().get("travelDistance").getAsDouble());
         }
@@ -165,9 +166,9 @@ public class DownloadProducts extends AsyncTask<String, Void, List<Product>> {
         // Get a list of each unique chain to assign 1 nearest store distance to
         // Hashmap only stores 1 item per key. Use that as a unique filter.
         Map<String,String[]> chainNearestInfoList = new HashMap<>();
-        for (int i=0; i<stores.length; i++) {
+        for (String[] store : stores) {
             // Put empty details for now.
-            chainNearestInfoList.put(stores[i][0],new String[0]);
+            chainNearestInfoList.put(store[0], new String[0]);
         }
 
         // Since the list (nameNdistance) is sorted, the first instance of each chain will be the nearest.
