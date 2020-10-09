@@ -1,0 +1,7 @@
+name: Workflow for Codecov
+on: [push]
+jobs:
+	codecov-integ:
+		steps:
+			- uses: actions/checkout@master
+			- uses: codecov/codecov-action@v1
