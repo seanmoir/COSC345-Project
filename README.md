@@ -9,15 +9,6 @@ Built using Java
 ![GitHub repo size](https://img.shields.io/github/repo-size/ubaada/COSC345-Project)
 ![](https://img.shields.io/badge/Platform-Android-brightgreen)
 
-# WIP
-Location based searching
-
-# Currently working
-
-Basic functionality of searching for products (Assignment 2)
-<br>
-Being able to open searched products in a web browser (Assignment 3)
-
 # Code Documentation:
 https://ubaada.github.io/COSC345-Project/
 
@@ -28,6 +19,8 @@ https://developer.android.com/studio/run
 Or build from command line and run manually:
 https://developer.android.com/studio/build/building-cmdline
 
+# Binary location
+/app/build/outputs/apk/debug/app-debug.apk
 
 # Tested
 Galaxy s8+ (Android 9)
