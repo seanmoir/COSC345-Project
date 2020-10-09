@@ -29,7 +29,7 @@ Or build from command line and run manually:
 https://developer.android.com/studio/build/building-cmdline
 
 # Binary location
-app/build/outputs/apk/debug
+/app/build/outputs/apk/debug/app-debug.apk
 
 # Tested
 Galaxy s8+ (Android 9)
