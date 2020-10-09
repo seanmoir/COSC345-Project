@@ -25,16 +25,15 @@ public class DownloadProductsTest {
         assertNotEquals(DownloadProducts.NewWorldProducts("h").size(), 0);
     }
 
-    /**
+    /*
      * Checks Liqourland data that it returns results
      *
      * @throws IOException connection issues
-     */
-    @Test
-    public void liqourlandData_ReturnsNonEmpty() throws IOException {
-        assertNotNull(DownloadProducts.LiqourLandProducts("h"));
-        assertNotEquals(DownloadProducts.LiqourLandProducts("h").size(), 0);
-    }
+
+     @Test public void liqourlandData_ReturnsNonEmpty() throws IOException {
+     assertNotNull(DownloadProducts.LiqourLandProducts("h"));
+     assertNotEquals(DownloadProducts.LiqourLandProducts("h").size(), 0);
+     }*/
 
     /**
      * Checks Pak 'n' Save data that it returns results
